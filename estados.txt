@@ -1,0 +1,29 @@
+Sigla;Nome;Capital
+br;Federação;Brasília
+ac;Acre;Rio Branco
+al;Alagoas;Maceió
+ap;Amapá;Macapá
+am;Amazonas;Manaus
+ba;Bahia;Salvador
+ce;Ceara;Fortaleza
+df;Distrito Federal;Brasília
+es;Espírito Santo;Vitória
+go;Goiás;Goiânia
+ma;Maranhão;São Luiz
+mt;Mato Grosso;Cuiabá
+ms;Mato Grosso do Sul;Campo Grande
+mg;Minas Gerais;Belo Horizonte
+pa;Pará;Belém
+pb;Paraíba;João Pessoa
+pr;Paraná;Curitiba
+pe;Pernambuco;Recife
+pi;Piauí;Terezina
+rj;Rio de Janeiro;Rio de Janeiro
+rn;Rio Grande do Norte;Natal
+rs;Rio Grande do Sul;Porto Alegre
+ro;Rondônia;Porto Velho
+rr;Roraima;Boa Vista
+sc;Santa Catarina;Florianópolis
+sp;São Paulo;São Paulo
+se;Sergipe;Aracajú
+to;Tocantins;Palmas
