@@ -4,39 +4,17 @@
 # set_link2 <-'-c0001-e000545-r.json'
 
 
-
 # Carrega dados estados
 estados <- read.table('estados.txt', sep = ';', header = T)
+teste <- read.table('teste.txt', sep = ';')
 
 
 
-# Configura link de acesso ao TSE
-set_link1 <- 'https://resultados.tse.jus.br/oficial/ele2022/544/dados-simplificados/'
-set_link2 <-'-c0001-e000544-r.json'
-for(uf in estados['Sigla']) {
-  links <- paste(set_link1, uf, '/', uf, set_link2, sep = '')
-}
-
-
-
-# Faz o Get dos arquivos JSON e configura dataframes
-df_geral <- data.frame()
-df_primeiro <- data.frame()
-df_segundo <- data.frame()
-for(link in links) {
-  data_UF <- httr::GET(link) |> httr::content()
-  df_geral <- rbind(df_geral, as.data.frame(data_UF)[1,1:64])
-  
-  for(i in 1:11){
-    if(data_UF$cand[[i]]$seq =='1'){
-      df_primeiro <- rbind(df_primeiro, as.data.frame(data_UF$cand[[i]]))
-    }
-    if(data_UF$cand[[i]]$seq =='2'){
-      df_segundo <- rbind(df_segundo, as.data.frame(data_UF$cand[[i]]))
-    }
-  }
-}
-
+# Define os dataframes
+df_list <- getdata_url()
+df_geral <- df_list[[1]]
+df_primeiro <- df_list[[2]]
+df_segundo <- df_list[[3]]
 
 
 # % de apuraçao Federação + UF

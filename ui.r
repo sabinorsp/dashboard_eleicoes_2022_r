@@ -5,9 +5,12 @@ library(shinythemes)
 library(dplyr)
 library(ggplot2)
 
-source('processing_data.R')
+source('getdataTSE.r')
+#source('processing_data.r')
+
 
 ui <- dashboardPage(
+  
   dashboardHeader(
     title = "Eleições 2° Turno - Presidente"
                   ),
@@ -25,7 +28,7 @@ ui <- dashboardPage(
   dashboardBody(
     tabItems(
       tabItem( tabName = 'page_resumo',
-               source('page_resumo.R')),
+               source('page_resumo.r')),
       
       tabItem(tabName = 'page_regional',
               source('page_regional.R'))

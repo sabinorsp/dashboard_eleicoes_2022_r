@@ -1,6 +1,8 @@
 page_resumo <- fluidRow(
   includeCSS("www/css.css"),
-  
+
+  # Current time
+  h2(textOutput('currentTime')),
   
   
   # Apuração % Total 
@@ -9,25 +11,27 @@ page_resumo <- fluidRow(
   
   
   # Primeiro Colocado
+  #imageOutput('cand_1'),
   box(
     title = '1° Colocado:',
     status = 'success',
     solidHeader = TRUE,
     collapsible = F,
-    img(src =num_cand1, height= 100, width=90),
+    imageOutput("num_cand1"),
     div(class='inline-block',infoBoxOutput("qtd_voto1", width = NULL)),
     valueBoxOutput("cand_1_percent", width = NULL),
     ),
 
- 
+  
   
   # Segundo Colocado
   box(
-    title = '2°- Colocado',
+    title = '2°- Colocado', 
     status = 'warning',
     solidHeader = TRUE,
     collapsible = FALSE,
-    img(src =num_cand2, height= 100, width=90),
+    height = 4,
+    imageOutput('num_cand2'),
     div(class='inline-block',infoBoxOutput("qtd_voto2", width = NULL)),
     valueBoxOutput("cand_2_percent", width = NULL)),
 
@@ -37,6 +41,8 @@ page_resumo <- fluidRow(
   box(
     title = 'Relação de apurações por região',
     width = 10,
+    solidHeader = TRUE,
+    collapsible = T,
     plotOutput("plot_pvv", height = 380)
   ),
   
