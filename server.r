@@ -28,7 +28,7 @@ server <- function(input, output, session) {
   # Data e hora 
   output$currentTime <- renderText({
     invalidateLater(1000, session)
-    paste0(format(Sys.time(), "%a %b %d %X "))
+    paste0(format(Sys.time(), "%X "))
   })
   
   
@@ -39,8 +39,9 @@ server <- function(input, output, session) {
       paste(
         (select(values$df, pvv) %>% filter(values$df$cdabr == 'br'))[1,1],
         "%",' ' ,'das seções totalizadas'),
-      paste('Data e Horário: ', Sys.time(),'Ultima Atualização: "Colocar o Dado aqui"'),
+      paste('Ultima Atualização: "Colocar o Dado aqui"'),
       icon = icon('glyphicon-home', lib='glyphicon'),
+      color ='blue'
     )
   )
   
@@ -49,45 +50,33 @@ server <- function(input, output, session) {
   # % dos votos apurados por Candidato
   output$cand_1_percent <- renderValueBox({
     valueBox(
-      paste(select(values$df1, pvap)[1,1],"%"), 
-      (select(values$df1, nm))[1,1], 
+      paste((select(values$df1, pvap))[1,1], '%'), 
+      paste('Qtd.Voto:',(select(values$df1, vap))[1,1]), 
       icon = icon("hourglass", 
       lib = "glyphicon"),
-      color = "green"
+      color = "light-blue"
     )
   })
   
   output$cand_2_percent <- renderValueBox({
     valueBox(
-      paste(select(values$df2, pvap)[1,1],"%"),
-      (select(values$df2, nm))[1,1],
+      paste((select(values$df2, pvap))[1,1], '%'), 
+      paste('Qtd.Voto:',(select(values$df2, vap))[1,1]), 
       icon = icon("hourglass", 
       lib = "glyphicon"),
-      color = "yellow"
+      color = "light-blue"
     )
   })
 
   
   
   # Quantidade dos Votos Apurados
-  output$qtd_voto1 <- renderInfoBox({
-    infoBox(
-      "Quantidade de Votos: ", 
-      (select(values$df1, vap))[1,1], 
-      icon = icon("glyphicon-home", lib ='glyphicon'),
-      color = "green",
-      fill = T
-    )
+  output$qtd_voto1 <- renderText({
+    paste0((select(values$df1, nm))[1,1])
   })
   
-  output$qtd_voto2 <- renderInfoBox({
-    infoBox(
-      "Quantidade de Votos: ", 
-      (select(values$df2, vap))[1,1], 
-      icon = icon("glyphicon-home", lib ='glyphicon'),
-      color = "yellow",
-      fill = T
-    )
+  output$qtd_voto2 <- renderText({
+    paste0((select(values$df2, nm))[1,1])
   })
   
   
