@@ -1,5 +1,5 @@
 page_resumo <- fluidRow(
-  includeCSS("www/css.css"),
+  #includeCSS("www/css.css"),
   
   # Current time
   box(
@@ -26,7 +26,6 @@ page_resumo <- fluidRow(
     imageOutput("num_cand1", inline=T),
     valueBoxOutput("cand_1_percent", width = NULL),
     ),
-
   
   
   # Segundo Colocado

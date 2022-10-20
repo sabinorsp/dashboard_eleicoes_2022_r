@@ -4,16 +4,16 @@ plot_pvv <- function(df){
   UF_pvv <- select(
     df,
     cdabr,
-    pvv
+    pst
   ) 
   UF_pvv <- UF_pvv[-1,]
-  UF_pvv['pvv'] <- gsub(',', '.', UF_pvv$pvv)
-  UF_pvv["pvv"] <- sapply(UF_pvv$pvv, as.numeric)
+  UF_pvv['pst'] <- gsub(',', '.', UF_pvv$pst)
+  UF_pvv["pst"] <- sapply(UF_pvv$pst, as.numeric)
   
   median_region_pvv <- function(reg){
     pvv_sum <- 0
     for(uf in reg){
-      var <- (select(df, cdabr, pvv) %>% filter(cdabr == uf))[1,2]
+      var <- (select(df, cdabr, pst) %>% filter(cdabr == uf))[1,2]
       var <- gsub(',','.', var)
       pvv_sum = pvv_sum + as.numeric(var)
     }
@@ -34,18 +34,21 @@ plot_pvv <- function(df){
     median_region_pvv(sul))
   
   regional_pvv <- data.frame(
-    "Regiões " = c('Norte', 'Nordeste', 'Centro Oeste', 'Sudeste', 'Sul'),
+    "Regioes" = c('Norte', 'Nordeste', 'Centro Oeste', 'Sudeste', 'Sul'),
     "median_pvv" = mean_pvv
   )
-  colnames(regional_pvv) <- c('Regiões', 'median_pvv')
+  colnames(regional_pvv) <- c('Regioes', 'median_pvv')
   
-  plot_pvv <- ggplot(regional_pvv, aes(x=`Regiões`, y=median_pvv, fill = `Regiões`)) + 
+  plot_pvv <- ggplot(regional_pvv, aes(x=Regioes, y=median_pvv, fill = Regioes)) + 
     geom_bar(stat = 'identity')+
-    geom_text(aes(label=paste0(median_pvv,'%')), vjust=0.5, color="black",
+    geom_col(position='fill' )+
+    scale_fill_brewer(palette = "Pastel1")+
+    geom_text(aes(label=paste0(round(median_pvv, 2),'%')), vjust=0.5, color="black",
               position = position_dodge(0.9), size=6)+
     ylab('% das apurações') + 
     xlab('Regiões da Federação')+
     coord_flip()
+  
   return(plot_pvv)
   
 }

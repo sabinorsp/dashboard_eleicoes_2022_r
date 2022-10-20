@@ -4,11 +4,11 @@ source('plot_pvv.r')
 
 
 server <- function(input, output, session) {
-  session$onSessionEnded(stopApp)
+  #session$onSessionEnded(stopApp)
   
   values <- reactiveValues(df = data.frame())
   
-  observeEvent(reactiveTimer(20000)(), {
+  observeEvent(reactiveTimer(480000)(), {
     values$df <- isolate({
       values$df <- df_get_geral()
     })
@@ -37,9 +37,11 @@ server <- function(input, output, session) {
   output$pvv <- renderValueBox(
     valueBox(
       paste(
-        (select(values$df, pvv) %>% filter(values$df$cdabr == 'br'))[1,1],
+        (select(values$df, pst) %>% filter(values$df$cdabr == 'br'))[1,1],
         "%",' ' ,'das seções totalizadas'),
-      paste('Ultima Atualização: "Colocar o Dado aqui"'),
+      paste('Ultima Atualização:', 
+            ((select(values$df, dg)) %>% filter(values$df$cdabr == 'br'))[1,1],
+            ((select(values$df, hg)) %>% filter(values$df$cdabr == 'br'))[1,1]),
       icon = icon('glyphicon-home', lib='glyphicon'),
       color ='blue'
     )
@@ -91,7 +93,7 @@ server <- function(input, output, session) {
   output$num_cand1 <- renderImage({
     filename <- normalizePath(file.path(paste('www/',(select(values$df1, sqcand))[1,1],'.jpg', sep='')))
     list(
-      src=filename,
+      src= filename,
       height = 100,
       width=90
       )

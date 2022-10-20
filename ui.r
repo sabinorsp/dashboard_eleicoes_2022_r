@@ -4,6 +4,7 @@ library(plotly)
 library(shinythemes)
 library(dplyr)
 library(ggplot2)
+library(scales)
 
 source('getdataTSE.r')
 #source('processing_data.r')

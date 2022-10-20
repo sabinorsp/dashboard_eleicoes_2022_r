@@ -1,10 +1,14 @@
 page_regional <- fluidRow(
   box(div(class = "my-class", "Div content")),
 
+  
+  box(
+    uiOutput('img1'),
+    title = 'Primeiro colocado',
     
-  mainPanel(
-    # Use imageOutput to place the image on the page
-    imageOutput("cand_1")
-  )
-    
-)# FIM
+  ),
+  
+  uiOutput(outputId = 'img2'),
+  
+  
+  )# FIM

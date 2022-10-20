@@ -1,14 +1,23 @@
+
+# Link antigo
+#set_link1 <- 'https://resultados.tse.jus.br/oficial/ele2022/544/dados-simplificados/'
+#set_link2 <-'-c0001-e000544-r.json'
+
 # Carrega dados estados
 estados <- read.table('estados.txt', sep = ';', header = T)
 
+#
+
 getdata_url <- function(){
   # Configura link de acesso ao TSE
-  set_link1 <- 'https://resultados.tse.jus.br/oficial/ele2022/544/dados-simplificados/'
-  set_link2 <-'-c0001-e000544-r.json'
+  set_link1 <- 'https://resultados-sim.tse.jus.br/teste/ele2022/9722/dados-simplificados/'
+  set_link2 <-'-c0001-e009722-r.json'
+  
   for(uf in estados['Sigla']) {
     links <- paste(set_link1, uf, '/', uf, set_link2, sep = '')
   }
-  
+  #link 1 simulação 'https://https://resultados-sim.tse.jus.br/teste/ele2022/9724/dados-simplificados/'
+  #link 2 simulação '-c0001-e009724-r.json'
   # Faz o Get dos arquivos JSON e configura dataframes
   df_geral <- data.frame()
   df_primeiro <- data.frame()
@@ -17,7 +26,7 @@ getdata_url <- function(){
     data_UF <- httr::GET(link) |> httr::content()
     df_geral <- rbind(df_geral, as.data.frame(data_UF)[1,1:64])
     
-    for(i in 1:11){
+    for(i in 1:2){
       if(data_UF$cand[[i]]$seq =='1'){
         df_primeiro <- rbind(df_primeiro, as.data.frame(data_UF$cand[[i]]))
       }
