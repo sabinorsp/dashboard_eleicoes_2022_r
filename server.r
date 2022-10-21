@@ -1,14 +1,13 @@
 source('getdataTSE.r')
 source('plot_pvv.r')
 
-
-
 server <- function(input, output, session) {
   #session$onSessionEnded(stopApp)
   
   values <- reactiveValues(df = data.frame())
   
   observeEvent(reactiveTimer(480000)(), {
+  
     values$df <- isolate({
       values$df <- df_get_geral()
     })

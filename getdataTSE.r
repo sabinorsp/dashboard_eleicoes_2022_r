@@ -56,5 +56,4 @@ df_get_segundo <- function(){
   return(df_segundo[[3]])
 }
 
-
-
+### Permanecer resultados geral cand1 e cand2 em arquivo csv para posteriores análises ###
