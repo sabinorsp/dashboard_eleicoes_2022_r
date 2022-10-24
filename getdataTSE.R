@@ -23,7 +23,7 @@ getdata_url <- function(){
   df_primeiro <- data.frame()
   df_segundo <- data.frame()
   for(link in links) {
-    data_UF <- httr::GET(link) |> httr::content()
+    data_UF <- httr::content(httr::GET(link))
     df_geral <- rbind(df_geral, as.data.frame(data_UF)[1,1:64])
     
     for(i in 1:2){
