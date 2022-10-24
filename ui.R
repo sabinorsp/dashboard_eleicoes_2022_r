@@ -1,16 +1,11 @@
-library(shinydashboard)#
-library(shiny) #
-#library(plotly) #
+library(shinydashboard)
+library(shiny) 
 library(shinythemes) 
 library(dplyr)
 library(ggplot2)
 library(scales)
-
-source('getdataTSE.R')
-#source('processing_data.r')
-
-
-# Testando Branche
+library(readr)
+source('plot_pvv.R')
 
 ui <- dashboardPage(
   

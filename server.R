@@ -1,42 +1,43 @@
-source('getdataTSE.R')
-source('plot_pvv.R')
-
 server <- function(input, output, session) {
-  #session$onSessionEnded(stopApp)
   
   values <- reactiveValues(df = data.frame())
   
-  observeEvent(reactiveTimer(480000)(), {
+  observeEvent(reactiveTimer(360000)(), {
   
     values$df <- isolate({
-      values$df <- df_get_geral()
+      values$df <- read_csv('df_geral.csv')
     })
     
     values$df1 <- isolate({
-      values$df1 <- df_get_primeiro()
+      values$df1 <- read_csv('df_primeiro.csv')
     })
     
     values$df2 <- isolate({
-      values$df2 <- df_get_segundo()
+      values$df2 <- read_csv('df_segundo.csv')
+    })
+    
+    values$df3 <- isolate({
+      values$df3 <- read.table('teste.txt')
     })
     
   })
   
 
-  
   # Data e hora 
   output$currentTime <- renderText({
+    Sys.setenv(TZ='GMT3')
     invalidateLater(1000, session)
     paste0(format(Sys.time(), "%X "))
   })
   
   
-  
+  # (select(values$df, pst) %>% filter(values$df$cdabr == 'br'))[1,1]
   # Total de votos Apurados
-  output$pvv <- renderValueBox(
+  output$pvv <- renderValueBox({
+    datageral <- datageral()
     valueBox(
       paste(
-        (select(values$df, pst) %>% filter(values$df$cdabr == 'br'))[1,1],
+        values$df3$x,
         "%",' ' ,'das seções totalizadas'),
       paste('Ultima Atualização:', 
             ((select(values$df, dg)) %>% filter(values$df$cdabr == 'br'))[1,1],
@@ -44,8 +45,7 @@ server <- function(input, output, session) {
       icon = icon('glyphicon-home', lib='glyphicon'),
       color ='blue'
     )
-  )
-  
+  })
   
   
   # % dos votos apurados por Candidato
@@ -70,7 +70,6 @@ server <- function(input, output, session) {
   })
 
   
-  
   # Quantidade dos Votos Apurados
   output$qtd_voto1 <- renderText({
     paste0((select(values$df1, nm))[1,1])
@@ -79,7 +78,6 @@ server <- function(input, output, session) {
   output$qtd_voto2 <- renderText({
     paste0((select(values$df2, nm))[1,1])
   })
-  
   
   
   # Diferença de votos do 1° para o 2° colocado
@@ -112,7 +110,6 @@ server <- function(input, output, session) {
   output$plot_pvv <- renderPlot({
     plot_pvv(values$df)
   })
-  
   
   
   } # FIM
