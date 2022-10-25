@@ -3,7 +3,7 @@ page_resumo <- fluidRow(
   
   # Current time
   box(
-    title = 'Horário Atual:',
+    title = 'Horário Atual (GMT-3):',
     width = NULL,
     solidHeader = T,
     status = 'primary',

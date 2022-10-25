@@ -32,27 +32,30 @@ server <- function(input, output, session) {
   
   
   # (select(values$df, pst) %>% filter(values$df$cdabr == 'br'))[1,1]
+  #((select(values$df, hg)) %>% filter(values$df$cdabr == 'br'))[1,1])
   # Total de votos Apurados
   output$pvv <- renderValueBox({
-    datageral <- datageral()
     valueBox(
       paste(
         values$df3$x,
         "%",' ' ,'das seções totalizadas'),
       paste('Ultima Atualização:', 
             ((select(values$df, dg)) %>% filter(values$df$cdabr == 'br'))[1,1],
-            ((select(values$df, hg)) %>% filter(values$df$cdabr == 'br'))[1,1]),
+            as.character(data.frame((select(values$df, hg)) %>% filter(values$df$cdabr == 'br'))[1,1])),
       icon = icon('glyphicon-home', lib='glyphicon'),
       color ='blue'
     )
   })
   
-  
+  #(select(values$df1, vap))[1,1])
   # % dos votos apurados por Candidato
   output$cand_1_percent <- renderValueBox({
     valueBox(
       paste((select(values$df1, pvap))[1,1], '%'), 
-      paste('Qtd.Voto:',(select(values$df1, vap))[1,1]), 
+      paste('Qtd.Voto:',
+            formatC(data.frame((select(values$df1, vap))[1,1])[1,1],
+                    format='d',
+                    big.mark=',')), 
       icon = icon("hourglass", 
       lib = "glyphicon"),
       color = "light-blue"
@@ -62,7 +65,10 @@ server <- function(input, output, session) {
   output$cand_2_percent <- renderValueBox({
     valueBox(
       paste((select(values$df2, pvap))[1,1], '%'), 
-      paste('Qtd.Voto:',(select(values$df2, vap))[1,1]), 
+      paste('Qtd.Voto:',
+            formatC(data.frame((select(values$df2, vap))[1,1])[1,1],
+                    format='d',
+                    big.mark=',')), 
       icon = icon("hourglass", 
       lib = "glyphicon"),
       color = "light-blue"
@@ -82,8 +88,13 @@ server <- function(input, output, session) {
   
   # Diferença de votos do 1° para o 2° colocado
   output$diff <- renderText({
-    as.integer((select(values$df1, vap))[1,1]) - as.integer((select(values$df2, vap))[1,1])})
-  
+    formatC(
+    as.integer((select(values$df1, vap))[1,1]) - as.integer((select(values$df2, vap))[1,1]),
+    format= 'd',
+    big.mark=','
+    )
+    })
+    
   
   # sqcand - número fixo do candidato para primeiro e segundo colocado
   
