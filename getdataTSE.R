@@ -1,5 +1,8 @@
+source('data/get_result.R')
+library(dplyr)
+library(readr)
 # Carrega dados estados
-estados <- read.table('estados.txt', sep = ';', header = T)
+estados <- read.table('data/estados.txt', sep = ';', header = T)
 
 # Configura link de acesso ao TSE
 set_link1 <- 'https://resultados-sim.tse.jus.br/teste/ele2022/9722/dados-simplificados/'
@@ -65,11 +68,12 @@ while(TRUE){
   df_segundo <- select(df_segundo, pvap, vap, nm, sqcand)
   df_segundo['pvap'] <- gsub(',', '.', df_segundo$pvap)
   df_segundo['pvap'] <- sapply(df_segundo$pvap, as.numeric)
-  
+   
   # Permanecer datasets em csv
-  write_csv(df_geral, 'df_geral.csv')
-  write_csv(df_primeiro,'df_primeiro.csv')
-  write_csv(df_segundo,'df_segundo.csv')
+  get_result(df_geral, df_primeiro, df_segundo)
+  write_csv(df_geral, 'data/df_geral.csv')
+  write_csv(df_primeiro,'data/df_primeiro.csv')
+  write_csv(df_segundo,'data/df_segundo.csv')
   
   Sys.sleep(300)
 } # Fim While  

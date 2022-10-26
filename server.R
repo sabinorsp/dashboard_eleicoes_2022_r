@@ -5,19 +5,19 @@ server <- function(input, output, session) {
   observeEvent(reactiveTimer(360000)(), {
   
     values$df <- isolate({
-      values$df <- read_csv('df_geral.csv')
+      values$df <- read_csv('data/df_geral.csv')
     })
     
     values$df1 <- isolate({
-      values$df1 <- read_csv('df_primeiro.csv')
+      values$df1 <- read_csv('data/df_primeiro.csv')
     })
     
     values$df2 <- isolate({
-      values$df2 <- read_csv('df_segundo.csv')
+      values$df2 <- read_csv('data/df_segundo.csv')
     })
     
     values$df3 <- isolate({
-      values$df3 <- read.table('teste.txt')
+      values$df3 <- read_csv('data/results_time.csv')
     })
     
   })
@@ -32,12 +32,11 @@ server <- function(input, output, session) {
   
   
   # (select(values$df, pst) %>% filter(values$df$cdabr == 'br'))[1,1]
-  #((select(values$df, hg)) %>% filter(values$df$cdabr == 'br'))[1,1])
   # Total de votos Apurados
   output$pvv <- renderValueBox({
     valueBox(
       paste(
-        values$df3$x,
+        (select(values$df, pst) %>% filter(values$df$cdabr == 'br'))[1,1],
         "%",' ' ,'das seções totalizadas'),
       paste('Ultima Atualização:', 
             ((select(values$df, dg)) %>% filter(values$df$cdabr == 'br'))[1,1],
@@ -122,5 +121,10 @@ server <- function(input, output, session) {
     plot_pvv(values$df)
   })
   
+  
+  # PLot Gráfico Resultado % apuração por tempo
+  output$plot_result_time <- renderPlot({
+    plot_result_time(values$df3)
+  })
   
   } # FIM
