@@ -7,15 +7,12 @@ plot_pvv <- function(df){
     pst
   ) 
   UF_pvv <- UF_pvv[-1,]
-  UF_pvv['pst'] <- gsub(',', '.', UF_pvv$pst)
-  UF_pvv["pst"] <- sapply(UF_pvv$pst, as.numeric)
   
   median_region_pvv <- function(reg){
     pvv_sum <- 0
     for(uf in reg){
       var <- (select(df, cdabr, pst) %>% filter(cdabr == uf))[1,2]
-      var <- gsub(',','.', var)
-      pvv_sum = pvv_sum + as.numeric(var)
+      pvv_sum = pvv_sum + var
     }
     return(pvv_sum/length(reg))
   }

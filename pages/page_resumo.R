@@ -3,7 +3,7 @@ page_resumo <- fluidRow(
   
   # Current time
   box(
-    title = 'Horário Atual:',
+    title = 'Horário Atual (GMT-3):',
     width = NULL,
     solidHeader = T,
     status = 'primary',
@@ -37,6 +37,17 @@ page_resumo <- fluidRow(
     imageOutput('num_cand2', inline = T),
     valueBoxOutput("cand_2_percent", width = NULL)),
 
+  
+  # Plot Resultado % apuração por tempo 
+  box(
+    title = 'Resultado % em relação ao tempo de atualização',
+    width = 10,
+    status = 'primary',
+    solidHeader = TRUE,
+    background = 'aqua',
+    collapsible = T,
+    plotOutput("plot_result_time", height = 380)
+  ),
   
   
   # Plot % de apuração por região

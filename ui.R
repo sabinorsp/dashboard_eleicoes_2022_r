@@ -1,15 +1,12 @@
-library(shinydashboard)#
-library(shiny) #
-#library(plotly) #
+library(shinydashboard)
+library(shiny) 
 library(shinythemes) 
 library(dplyr)
 library(ggplot2)
 library(scales)
-
-source('getdataTSE.R')
-#source('processing_data.r')
-
-
+library(readr)
+source('functions/plot_pvv.R')
+source('functions/plot_result_time.R')
 ui <- dashboardPage(
   
   dashboardHeader(
@@ -29,10 +26,10 @@ ui <- dashboardPage(
   dashboardBody(
     tabItems(
       tabItem( tabName = 'page_resumo',
-               source('page_resumo.R')),
+               source('pages/page_resumo.R')),
       
       tabItem(tabName = 'page_regional',
-              source('page_regional.R'))
+              source('pages/page_regional.R'))
       
     )
   )
