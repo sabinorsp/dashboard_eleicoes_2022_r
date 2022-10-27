@@ -15,10 +15,10 @@ ui <- dashboardPage(
   
   
   dashboardSidebar(
+    disable = TRUE,
     sidebarMenu(
       width = 350,
-      menuItem("Resultado Geral", tabName = "page_resumo", icon = icon("tachometer-alt")),
-      menuItem("Resultados Regionais", tabName = "page_regional", icon = icon("th"))
+      menuItem("Resultado Geral", tabName = "page_resumo", icon = icon("tachometer-alt"))
     )
   ),
   
@@ -26,10 +26,8 @@ ui <- dashboardPage(
   dashboardBody(
     tabItems(
       tabItem( tabName = 'page_resumo',
-               source('pages/page_resumo.R')),
+               source('ui/page_resumo.R'))
       
-      tabItem(tabName = 'page_regional',
-              source('pages/page_regional.R'))
       
     )
   )
