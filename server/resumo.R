@@ -12,7 +12,7 @@ output$pvv <- renderValueBox({
     paste(
       (select(values$df, pst) %>% filter(values$df$cdabr == 'br'))[1,1],
       "%",' ' ,'das seções totalizadas'),
-    paste('Ultima Atualização:', 
+    paste('Última Atualização:', 
           ((select(values$df, dg)) %>% filter(values$df$cdabr == 'br'))[1,1],
           as.character(data.frame((select(values$df, hg)) %>% filter(values$df$cdabr == 'br'))[1,1])),
     icon = icon('glyphicon-home', lib='glyphicon'),
