@@ -44,6 +44,13 @@ plot_pvv <- function(df){
               position = position_dodge(0.9), size=6)+
     ylab('% das apurações') + 
     xlab('Regiões da Federação')+
+    theme(
+      legend.text = element_text(size= 12),
+      legend.title  = element_text(size = 16),
+      axis.text = element_text(size=12),
+      axis.title.x = element_text(size= 14),
+      axis.title.y = element_text(size= 14)
+    ) + 
     coord_flip()
   
   return(plot_pvv)
