@@ -39,27 +39,27 @@ page_resumo <- fluidRow(
 
   
   # Plot Resultado % apuração por tempo 
-  box(
-    title = 'Resultado % em relação ao tempo de atualização',
-    width = 10,
-    status = 'primary',
-    solidHeader = TRUE,
-    background = 'aqua',
-    collapsible = T,
-    plotOutput("plot_result_time", height = 380)
-  ),
+#  box(
+#    title = 'Resultado % em relação ao tempo de atualização',
+#    width = 10,
+#    status = 'primary',
+#    solidHeader = TRUE,
+#    background = 'aqua',
+#    collapsible = T,
+#    plotOutput("plot_result_time", height = 380)
+#  ),
   
   
   # Plot % de apuração por região
-  box(
-    title = 'Relação de apurações por região',
-    width = 10,
-    status = 'primary',
-    solidHeader = TRUE,
-    background = 'aqua',
-    collapsible = T,
-    plotOutput("plot_pvv", height = 380)
-  ),
+#  box(
+#    title = 'Relação de apurações por região',
+#    width = 10,
+#    status = 'primary',
+#    solidHeader = TRUE,
+#    background = 'aqua',
+#    collapsible = T,
+#    plotOutput("plot_pvv", height = 380)
+#  ),
   
   
   

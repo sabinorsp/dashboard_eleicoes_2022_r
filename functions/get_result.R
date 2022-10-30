@@ -9,6 +9,7 @@ get_result <- function(df, df1, df2){
     'Result_%' <- result_cand1,
     'Nome_Cand' <- nm_cand1
   )
+  
   df_result <- rbind(df_result, c(hg, result_cand2, nm_cand2))
   colnames(df_result) <- c('Hora_Atualizacao', 'Result_%', 'Nome_Cand')
   
