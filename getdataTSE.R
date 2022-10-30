@@ -75,6 +75,6 @@ while(TRUE){
   write_csv(df_primeiro,'data/df_primeiro.csv')
   write_csv(df_segundo,'data/df_segundo.csv')
   
-  Sys.sleep(300)
+  Sys.sleep(200)
 } # Fim While  
 

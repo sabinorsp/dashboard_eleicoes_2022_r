@@ -7,7 +7,7 @@ library(scales)
 library(readr)
 
 source('functions/plot_pvv.R')
-#source('functions/plot_result_time.R')
+source('functions/plot_result_time.R')
 
 ui <- dashboardPage(
   

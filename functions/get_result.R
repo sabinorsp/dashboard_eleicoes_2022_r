@@ -14,7 +14,7 @@ get_result <- function(df, df1, df2){
   colnames(df_result) <- c('Hora_Atualizacao', 'Result_%', 'Nome_Cand')
   
   if(file.exists('data/results_time.csv')){
-    hg_check <- read_csv('data/results_time.csv', col_names = F)
+    hg_check <- read_csv('data/results_time.csv',show_col_types = FALSE, col_names = F)
     if(hg != as.character(tail(hg_check$X1, n=1)) ){
       
       write_csv(df_result, 'data/results_time.csv', append= TRUE)
