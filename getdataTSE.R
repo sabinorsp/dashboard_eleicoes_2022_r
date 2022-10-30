@@ -4,9 +4,6 @@ library(readr)
 # Carrega dados estados
 estados <- read.table('data/estados.txt', sep = ';', header = T)
 
-# Link para 30/10/2022 
-# https://resultados.tse.jus.br/oficial/ele2022/547/dados-simplificados/br/br-c0001-e000547-r.json
-
 # Configura link de acesso ao TSE
 set_link1 <- 'https://resultados.tse.jus.br/oficial/ele2022/545/dados-simplificados/'
 set_link2 <-'-c0001-e000545-r.json'
