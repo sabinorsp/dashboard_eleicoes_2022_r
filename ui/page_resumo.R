@@ -51,15 +51,15 @@ page_resumo <- fluidRow(
   
   
   # Plot % de apuração por região
-  box(
-    title = 'Relação de apurações por região',
-    width = 10,
-    status = 'primary',
-    solidHeader = TRUE,
-    background = 'aqua',
-    collapsible = T,
-    plotOutput("plot_pvv", height = 380)
-  ),
+#  box(
+#    title = 'Relação de apurações por região',
+#    width = 10,
+#    status = 'primary',
+#    solidHeader = TRUE,
+#    background = 'aqua',
+#    collapsible = T,
+#    plotOutput("plot_pvv", height = 380)
+#  ),
   
   
   

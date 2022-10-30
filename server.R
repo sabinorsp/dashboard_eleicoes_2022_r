@@ -2,7 +2,7 @@ server <- function(input, output, session) {
   
   values <- reactiveValues(df = data.frame())
   
-  observeEvent(reactiveTimer(200000)(), {
+  observeEvent(reactiveTimer(20000)(), {
   
     values$df <- isolate({
       values$df <- read_csv('data/df_geral.csv', show_col_types = FALSE)
