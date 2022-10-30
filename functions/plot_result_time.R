@@ -1,5 +1,5 @@
 plot_result_time <- function(df){
-  data <- read_csv('data/results_time.csv', col_names = F)
+  data <- read_csv('data/results_time.csv', show_col_types = FALSE, col_names = F)
   cand_1 <- filter(data, data$X3 == 'LULA')
   cand_2 <- filter(data, data$X3 =='JAIR BOLSONARO')
   
