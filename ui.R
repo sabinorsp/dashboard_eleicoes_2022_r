@@ -9,6 +9,13 @@ library(readr)
 source('functions/plot_pvv.R')
 source('functions/plot_result_time.R')
 
+#Save requeriments.txt
+req <- sessionInfo()
+
+req
+
+write.table(req, 'requeriments.txt')
+
 ui <- dashboardPage(
   
   dashboardHeader(
