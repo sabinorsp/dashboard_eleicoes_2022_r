@@ -3,8 +3,15 @@ Esse projeto tem como objetivos a criação de uma aplicação web para acompanh
 Os dados da apuração foram transmitidos via API pelo Tribunal Superior Eleitoral brasileiro.
 
 ## Versões pacotes utilizados:
-- R -> Version: 
-( Em edição)
+- R -> Version:4.2.1;
+- shinydashboard_0.7.2;
+- shiny_1.7.2;
+- shinythemes_1.2.0;
+- dplyr_1.0.10;
+- ggplot2_3.3.6;
+- scales_1.2.1;
+- readr_2.1.2;
+
 ## Scripts/Diretórios: 
 - A aplicação Web está estruturada no pacote Shiny através dos arquivos principais ui.R e server.R.
 para melhor divisão e organização as páginas e recursos de processamento para cada pagina ficam salvas nos diretórios /ui e /server. 
